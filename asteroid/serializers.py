@@ -1,22 +1,10 @@
 from rest_framework import serializers
 
 from asteroid.mixins import StringErrorsMixin
-from asteroid.models import Observatory, Device, Asteroid
+from asteroid.models import Sighting
 
 
-class ObservatorySerializer(StringErrorsMixin, serializers.ModelSerializer):
+class SightingSerializer(StringErrorsMixin, serializers.ModelSerializer):
     class Meta:
-        model = Observatory
-        fields = "__all__"
-
-
-class DeviceSerializer(StringErrorsMixin, serializers.ModelSerializer):
-    class Meta:
-        model = Device
-        fields = "__all__"
-
-
-class AsteroidSerializer(StringErrorsMixin, serializers.ModelSerializer):
-    class Meta:
-        model = Asteroid
+        model = Sighting
         fields = "__all__"

@@ -1,11 +1,9 @@
 from rest_framework.routers import DefaultRouter
 
-from asteroid.views import ObservatoryViewSet, DeviceViewSet, AsteroidViewSet
+from asteroid.views import SightingViewSet
 
 router = DefaultRouter()
-router.register("observatories", ObservatoryViewSet, basename="observatory")
-router.register("devices", DeviceViewSet, basename="device")
-router.register("asteroids", AsteroidViewSet, basename="asteriod")
+router.register("sightings", SightingViewSet, basename="sighting")
 
 urlpatterns = [] + router.urls
 
