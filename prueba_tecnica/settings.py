@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qvx#nqyf(rsb%@ofk)=9qg+qac%f+)+1!sgbb=1i0a)flt5*9)'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG", default=False)
 
 ALLOWED_HOSTS = []
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'asteroid',
 ]
 
 MIDDLEWARE = [
@@ -75,11 +77,11 @@ WSGI_APPLICATION = 'prueba_tecnica.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'astrodb',
-        'USER': 'jelkins',
-        'PASSWORD': 'root1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': config("NAME_DB"),
+        'USER': config("USER_DB"),
+        'PASSWORD': config("PASSWORD_DB"),
+        'HOST': config("HOST_DB"),
+        'PORT': config("PORT_DB"),
     }
 }
 
@@ -104,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
